@@ -30,14 +30,7 @@ public class ExpressionEvaluator {
 
             //validacija razmaka
             if(string.charAt(i)==' ' && string.charAt(i+1)==' ') throw new RuntimeException("Nevalidan unos");
-            /*if(string.charAt(i) != ' ' && razmak==true){
-                razmak=false;
-            } else if(string.charAt(i) == ' ' && razmak==false){
-                razmak=true;
-            }
-            else{
-                throw new RuntimeException("Nevalidan unos");
-            } */
+
 
             //hvatanje stringa koji se nalazi izmedju razmaka u jedan string
             while (string.charAt(i) != ' ') {
