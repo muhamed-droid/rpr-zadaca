@@ -26,7 +26,7 @@ public class ExpressionEvaluator {
         boolean razmak = false;
 
         for(int i = 0; i < string.length(); i++) {
-            String s = "";
+            StringBuilder stringBuilder = new StringBuilder();
 
             //validacija razmaka
             if(string.charAt(i)==' ' && string.charAt(i+1)==' ') throw new RuntimeException("Nevalidan unos");
@@ -34,10 +34,12 @@ public class ExpressionEvaluator {
 
             //hvatanje stringa koji se nalazi izmedju razmaka u jedan string
             while (string.charAt(i) != ' ') {
-                s = s + string.charAt(i);
+                stringBuilder.append(string.charAt(i));
                 if (i == string.length() - 1) break;
                 i++;
             }
+
+            String s = String.valueOf(stringBuilder);
 
             //validiranje na osnovu toga šta taj string sadrži
             boolean validan = false;
