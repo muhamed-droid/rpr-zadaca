@@ -2,8 +2,6 @@ package ba.unsa.etf.rpr;
 
 import java.util.Stack;
 
-import static java.lang.String.valueOf;
-
 public class ExpressionEvaluator {
 
 
@@ -25,6 +23,9 @@ public class ExpressionEvaluator {
 
         boolean razmak = false;
 
+
+
+        int brojac=0;
         for(int i = 0; i < string.length(); i++) {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -40,6 +41,7 @@ public class ExpressionEvaluator {
             }
 
             String s = String.valueOf(stringBuilder);
+
 
             //validiranje na osnovu toga šta taj string sadrži
             boolean validan = false;
@@ -60,6 +62,10 @@ public class ExpressionEvaluator {
                 else if (s.equals("/")) operands.push(s);
                 else if (s.equals("sqrt")) operands.push(s);
                 else if (s.equals(")")) {
+                    if(brojac>2) {
+                       // throw new RuntimeException("Nevalidan unos");
+                    }
+                    brojac--;
                     String op = (String) operands.pop();
                     double v = (double) vals.pop();
                     if (op.equals("+")) v = (double) vals.pop() + v;
@@ -68,7 +74,13 @@ public class ExpressionEvaluator {
                     else if (op.equals("/")) v = (double) vals.pop() / v;
                     else if (op.equals("sqrt")) v = Math.sqrt(v);
                     vals.push(v);
-                } else vals.push(Double.parseDouble(s));
+                    if(!vals.empty()){
+                        validan=false;
+                    }
+                } else{
+                    vals.push(Double.parseDouble(s));
+                    brojac++;
+                }
             } else {
                 throw new RuntimeException("Nevalidan unos");
             }
