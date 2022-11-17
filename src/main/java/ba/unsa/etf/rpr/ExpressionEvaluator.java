@@ -2,20 +2,55 @@ package ba.unsa.etf.rpr;
 
 import java.util.Stack;
 
+/**
+ * Class for evaluating string!
+ * @author Muhamed Masnopita
+ */
+
 public class ExpressionEvaluator {
 
-
+    /**
+     * stack where operands are being held
+     *
+     */
     private java.util.Stack operands;
+
+
+    /**
+     * stack where values are being held
+     *
+     */
     private java.util.Stack vals;
 
+
+
+    /**
+     * This is a constructor where stacks for keeping values and operands are created
+     *
+     */
     public ExpressionEvaluator(){
         operands = new Stack<String>();
         vals = new Stack<Double> ();
     }
 
+    /**
+     * This is a method that test if string is regular to work with
+     * @return true if string is regular to work with, otherwise returns false
+     * @param s
+     */
+    public boolean daLiJeValidan(String s){
+        if(!s.startsWith("(")) return false;
+        return true;
+    }
+
+    /**
+     * This is method that evaluates string and calculate result
+     * @return result of values in string
+     * @param string
+     */
     public Double evaluate(String string){
         string = string.trim();
-        if(!string.startsWith("(")) {
+        if(!daLiJeValidan(string)) {
             throw new RuntimeException("Nevalidan unos");
         }
 
@@ -76,6 +111,8 @@ public class ExpressionEvaluator {
                 throw new RuntimeException("Nevalidan unos");
             }
         }
+        //Ovo radimo jer je moguće da nešto ostane u steku, tada unos nije validan.
+        //( 1 + 3 + 4 ) ne bi smio biti validan
         Double povratna = (Double) vals.pop();
         if(!vals.empty()) throw new RuntimeException("Nevalidan unos");
         return povratna;

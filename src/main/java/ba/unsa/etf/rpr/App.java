@@ -3,11 +3,15 @@ package ba.unsa.etf.rpr;
 import java.util.Scanner;
 
 /**
- * Hello world!
- *
+ * This is main class!
+ * @author Muhamed Masnopita
  */
 public class App 
 {
+    /**
+     * This is main method
+     * @param args
+     */
     public static void main( String[] args )
     {
         Scanner ulaz = new Scanner(System.in);
