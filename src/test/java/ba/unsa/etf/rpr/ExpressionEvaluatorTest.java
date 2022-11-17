@@ -41,6 +41,26 @@ public class ExpressionEvaluatorTest {
         Assertions.assertEquals(4.0, el.evaluate(" ( 16 sqrt )"));
     }
 
+    @Test void Test7(){
+        ExpressionEvaluator el = new ExpressionEvaluator();
+        Throwable exception = Assertions.assertThrows(RuntimeException.class,
+                ()->{el.evaluate("( 1 + 2 + 3 )");});
+    }
 
+    @Test void Test8(){
+        ExpressionEvaluator el = new ExpressionEvaluator();
+        Throwable exception = Assertions.assertThrows(RuntimeException.class,
+                ()->{el.evaluate("( 1 + 2 * / 1 )");});
+    }
+
+    @Test void Test9(){
+        ExpressionEvaluator el = new ExpressionEvaluator();
+        Assertions.assertEquals(5.0, el.evaluate("( ( 4 sqrt ) + ( 21 / 7 ) )"));
+    }
+
+    @Test void Test10(){
+        ExpressionEvaluator el = new ExpressionEvaluator();
+        Assertions.assertEquals(101.0, el.evaluate(" ( 1 + ( 5 * 20 ) )"));
+    }
 
 }
