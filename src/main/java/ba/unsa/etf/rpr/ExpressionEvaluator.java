@@ -117,4 +117,20 @@ public class ExpressionEvaluator {
         if(!vals.empty()) throw new RuntimeException("Nevalidan unos");
         return povratna;
     }
+
+    public Stack getOperands() {
+        return operands;
+    }
+
+    public void setOperands(Stack operands) {
+        this.operands = operands;
+    }
+
+    public Stack getVals() {
+        return vals;
+    }
+
+    public void setVals(Stack vals) {
+        this.vals = vals;
+    }
 }
