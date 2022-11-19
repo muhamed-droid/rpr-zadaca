@@ -22,7 +22,7 @@ public class App
         }catch(NumberFormatException e){
             throw new RuntimeException("Nevalidan unos");
         } catch(RuntimeException e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
    }
 }
